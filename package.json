@@ -1,0 +1,20 @@
+{
+  "name": "learning",
+  "version": "1.0.0",
+  "description": "The code I want to save from courses &amp; problem solving",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trconnolley/learning.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/trconnolley/learning/issues"
+  },
+  "homepage": "https://github.com/trconnolley/learning#readme"
+}
