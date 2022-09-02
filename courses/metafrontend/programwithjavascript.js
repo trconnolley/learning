@@ -459,10 +459,35 @@ const data = {
 }
 console.log(JSON.stringify(data)); //{"firstName":"John","lastName":"Doe","greeting":"Hello"}
 
-//using modules
-//    <script type="module"></script>
+//using modules   https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules
 
-//must improt node.js
+//      dependent on import and export statements
+
+//step 1 - export
+//can export var, let, const, and classes
+export const name = 'square';
+export function draw(ctx, length, x, y, color) {
+  ctx.fillStyle = color;
+  ctx.fillRect(x, y, length, length);
+
+  return { length, x, y, color };
+}
+
+//combine in a single export line
+export { name, draw };
+
+//step 2 - import
+import { name, draw } from './modules/square.js';  //  the '.' syntax means 'current location', rather than entire relative path
+
+//step 3 - apply module to html
+//    <script type="module" src=""></script>
+
+// or embed it
+
+//<script type="module">
+  /* JavaScript module code here */
+//</script>
+
 
 
 //style cosole output
