@@ -8,3 +8,4 @@ LeetCode: @trconnolley
 
 
 TODO List:
+-add JEST for testing

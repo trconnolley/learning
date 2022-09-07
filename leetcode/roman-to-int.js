@@ -54,7 +54,7 @@ It is guaranteed that s is a valid roman numeral in the range [1, 3999].
 //  Memory: 47.5 MB         Beats 51.51% of entries
 //  Pass Rate: 100% - 3999 / 3999
 
-/* 
+/* */
 const rns = {
     IV:4, IX:9, I:1, V:5, XL:40, XC:90, X:10, L:50, CD:400, CM:900, C:100, M:1000, D:500
     };
@@ -62,60 +62,53 @@ const rns = {
 var romanToInt = function(s) {
     let n = 0;
     for (var k of Object.keys(rns)) { 
-        while (s.includes(k)) {
+        //while (s.includes(k)) {
+        while (s.indexOf(k) >= 0) {
             n += rns[k];
             s = s.replace(k,'');
         };
     }
     return n;
 };
-*/
 
-
-const rns1 = { I:1, V:5, X:10, C:100, M:1000 };
-
-const rns2 = { IV:4, IX:9 }
-
-const rns3 = { XL:40, XC:90, CD:400, CM:900, L:50, D:500 }
 
 /*  I am here, working to get the least number of checks
-IV: excludes IX, I, V, 
-IX: excludes IV, I, V, 
-XL: excludes XC, L, 
-XC: excludes XL, L, 
-CD: excludes CM, D, 
-CM: excludes CD, D, 
-L: excludes XL, XC, 
-D: excludes CD, CM, 
+This is a complete junk show. I'm not accomplishing anything good.
 */
+/*
+const rmnd = {L:50, D:500, IV:4, IX:9, XL:40, XC:90, CD:400, CM:900, I:1, V:5, X:10, C:100, M:1000};
+const rmn_all = ["L","D","IV","IX","XL", "XC", "CD", "CM", "I", "V", "X", "C", "M"];
+//const roman_std = ["I", "V", "X", "C", "M"];
+const rmn_ex = {
+    IV: ['IX', 'I', 'V'], 
+    IX: ['IV', 'I', 'V'], 
+    XL: ['XC', 'L'], 
+    XC: ['XL', 'L'], 
+    CD: ['CM', 'D'], 
+    CM: ['CD', 'D'], 
+    L:  ['XL', 'XC'], 
+    D:  ['CD', 'CM'],
+    I:[],V:[],X:[],C:[],M:[] 
+}
+
+
 
 var romanToInt = function(s) {
     let n = 0;
-    let ignore = '';
-
-    for (var x of Object.keys(rns2)) { 
+    let arr = rmn_all;
+    for (var x of arr) { 
         if (s.indexOf(x) >= 0) {
-            n += rns2[x];
+            n += rmnd[x];
             s = s.replace(x,'');
-            ignore += x;
+            arr = arr.filter(item => !rmn_ex[x].includes(item));
         };
-    }
-    
-    if (s.indexOf("") >= 0) {
-        n += 4;
     };
-
-    for (var k of Object.keys(rns1)) { 
-        while (s.includes(k)) {
-            n += rns1[k];
-            s = s.replace(k,'');
-        };
-    }
+    
     //console.log(n);
     return n;
 };
 
-
+*/
 
 // //regex operations are slower than string operations
 // for (var k of Object.keys(rns)) {       
@@ -4194,37 +4187,55 @@ var romandictionary = {
     MMMCMXCIX:3999
 };
 
+//testing
+(() => {
+    let runs = 0;
+    let errtotal = 0;
+    for (var z of Object.keys(romandictionary)) { 
+        runs += 1
+        if (romanToInt(z) != romandictionary[z]) {
+            console.log(z + " returns incorrect;");
+            errtotal += 1;
+        }
 
-// //test to see what roman numeral combinations don't show up together
-// const romanspecial = ["IV","IX", "XL", "XC", "CD", "CM", "L", "D"];
-// const romanall = ["IV","IX", "XL", "XC", "CD", "CM", "L", "D","I", "V", "X", "C", "M"];
 
-// (() => {
+    }
+console.log(`Testing Complete: ${errtotal} errors out of ${runs} runs;  ${((runs - errtotal)/runs)*100}% success`)
 
-//     romanspecial.forEach(function(x) {
-//         let result = x + ": excludes ";
-        
-//         for (var y of romanall){
-//             if (x == y){continue;};
-//             let found = false;
+})()
+
+/* 
+//test to see what roman numeral combinations don't show up together
+const romanspecial = ["IV","IX", "XL", "XC", "CD", "CM", "L", "D"];
+const romanall = ["IV","IX", "XL", "XC", "CD", "CM", "L", "D","I", "V", "X", "C", "M"];
+
+(() => {
+
+    romanspecial.forEach(function(x) {
+        let result = '';
+        let count = 0;
+        for (var y of romanall){
+            if (x == y){continue;};
+            let found = false;
             
-//             for (var z of Object.keys(romandictionary)) { 
-//                 if (!z.includes(x)) { continue; };
-//                 let str = z.replace(x,"");
+            for (var z of Object.keys(romandictionary)) { 
+                if (!z.includes(x)) { continue; };
+                count +=1;
+                let str = z.replace(x,"");
 
-//                 if (str.includes(y)){
-//                     found = true;
-//                     break;
-//                 };
-//             };
+                if (str.includes(y)){
+                    found = true;
+                    break;
+                };
+            };
 
-//             if (!found) {
-//                 result += y + ", "
-//             };
+            if (!found) {
+                result += y + ", "
+            };
 
-//         };
-//         console.log(result);
-//     });
+        };
+        console.log(`${x}: excludes ${result}; count=${count}`);
+    });
 
-// })();
-
+})();
+*/
