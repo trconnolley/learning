@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucky Shrub</title>
+    <meta name="description" content="Curabitur in faucibus nunc. Suspendisse tempus tortor eget ex mollis, nec elementum quam fermentum.">
+    <meta name="author" content="Luck Shrub">
+
+<!-- Open Graph Protocol  //uncomment this code if sharing on social media-->
+<!--
+<meta property="og:title" content ="A brief description">
+<meta property="og:type" content ="website">
+<meta property="og:url" content ="https://www.mysite">
+<meta property="og:image" content ="image.png">
+
+<meta property="og:description" content ="A brief description">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Website Title vs Name of Indivual Page">
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@digitalocean" />
+<meta name="twitter:title" content="Sammy the Shark" />
+<meta name="twitter:description" content="Senior Selachimorpha at DigitalOcean" />
+<meta name="twitter:image" content="https://html.sammy-codes.com/images/large-profile.jpg" />
+-->
+
+<!--
+<link rel="icon" href="/favicon.ico">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+-->
+
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <img src="img/logo.png" alt="Lucky Shrub Logo">
+    </header>
+    <nav>
+        <img src="img/menu.png" alt="Menu" class="mobile-only" onclick="this.parentElement.classList.toggle('show');">
+        <ul>
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="nursery.html">NURSERY</a></li>
+            <li><a href="services.html">SERVICES</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
+        </ul>
+    </nav>
+    <div class="shade" onclick="hideMenu();"></div>
+    <main>
+        <div class="mobile-only notification" onclick="this.classList.add('hide');">
+            <h3>Mobile Notice:</h3>Are you seeing me? Please make your browser window wider to view the the non-mobile version. You can click me to remove me.
+        </div>
+        <article class="promotion" title="Fall Promotion: Short Summary of Details">
+            <div>
+                <h1>FALL PROMOTION</h1>
+                <p>Curabitur in faucibus nunc. Suspendisse tempus tortor eget ex mollis, nec elementum quam fermentum.</p>
+            </div>
+        </article>
+        <section class="tiles">
+            <article class="info col-1">
+                <h2>Shop the Nusery</h2>
+                <img src="img/p1020211.jpg" alt="Plants">
+                <p>In tincidunt varius nisl, id suscipit mi congue sit amet. Sed at pretium tortor. Nullam turpis ligula, elementum in ligula sed, fermentum vulputate risus.</p>
+                <a href="nursery.html">Shop Online Here</a>
+            </article>
+            <article class="info col-1">
+                <h2>Landscape Services</h2>
+                <img src="img/edu6993.jpg" alt="Cut Grass">
+                <p>Curabitur in faucibus nunc. Suspendisse tempus tortor eget ex mollis, nec elementum quam fermentum. Nullam viverra felis magna, et aliquet nulla tincidunt a. Etiam suscipit ipsum nulla, sit amet commodo est vehicula eget.</p>
+                <a href="services.html">Check out what we can do</a>
+            </article>
+            <article class="info col-1">
+                <h2>Location and Hours</h2>
+                <img src="img/rocheharborgardenwalk.jpg" alt="Nursery">
+                <p>In tincidunt varius nisl, id suscipit mi congue sit amet. Sed at pretium tortor.</p>
+                <p class="indent">Mon-Fri: <time>8:00a to 5:00p</time><br/>
+                    Sat: 8:00a to 7:00p<br/>
+                    Sun: Closed</p>
+                <address class="indent">1234 Street Rd.<br/>Tuscon, Arizona 12345</address>
+                <a href="contact.html">Contact Us</a>
+            </article>
+        </section>
+    </main>
+    <footer>
+        <div>
+            <div>
+                <img src="img/logo-small-img.png" alt="Logo">
+            </div>
+            <div><p>&#169; Copyright Lucky Shrub</p></div>
+        </div>
+        
+    </footer>
+    <script type="text/javascript">
+        function hideMenu() {
+            document.querySelector('nav').classList.remove('show');
+        }
+    </script>
+</body>
+</html>

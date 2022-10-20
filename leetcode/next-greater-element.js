@@ -103,7 +103,7 @@ var nextGreaterElement3 = function(nums1, nums2) {
 //trying a bit different
 //barely faster:   111ms   faster than 39.82%
 
-var nextGreaterElement44 = function(nums1, nums2) {
+var nextGreaterElement4 = function(nums1, nums2) {
     let arr = [];
 
     for (let i = 0; i < nums1.length; i++){
@@ -126,6 +126,10 @@ var nextGreaterElement44 = function(nums1, nums2) {
 //stepping it up, winner
 //104ms  faster than 50.5%
 //44.7mb  less than 23.75%
+
+//using map below (with no changes) submission resulted in:
+//65ms - fast than 98.14%
+//43.8 MB - less than 69.24%
 
 //good info
 //https://codeburst.io/array-vs-set-vs-map-vs-object-real-time-use-cases-in-javascript-es6-47ee3295329b
@@ -154,7 +158,7 @@ var nextGreaterElement5 = function(nums1, nums2) {
 
 //on last attemp
 //not faster, stick w/ map
-var nextGreaterElement = function(nums1, nums2) {
+var nextGreaterElement6 = function(nums1, nums2) {
     let m = {};
     let r = {};
     let l = nums2.length;
@@ -177,10 +181,33 @@ var nextGreaterElement = function(nums1, nums2) {
 };
 
 
+//followup: Could you find an O(nums1.length + nums2.length) solution?
+
+
+var nextGreaterElement5 = function(nums1, nums2) {
+  let m = new Map();
+  let r = new Map();
+  let l = nums2.length;
+  for (let i = 0; i <  l; i++) {
+      m.set(i,nums2[i]);
+      r.set(nums2[i],i);
+  };
+
+  return nums1.map(function(n){
+      let next = -1;
+      for (let j = r.get(n) + 1; j < l; j++) {
+          if (m.get(j) > n) {
+              next = m.get(j);
+              break;
+          };
+      };
+      return next;
+  });
+};
+
+
 console.log(nextGreaterElement([4,1,2],[1,3,4,2])); //Output: [-1,3,-1]
-
 console.log(nextGreaterElement([2,4],[1,2,3,4])); //[3,-1]
-
 console.log(nextGreaterElement([3,1,5,7,9,2,6],[1,2,3,5,6,7,9,11])); //[5,2,6,9,11,3,7]
 //wrong[5,2,6,9,-1,3,7]
 

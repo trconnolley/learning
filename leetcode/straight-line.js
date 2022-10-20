@@ -21,6 +21,11 @@ https://leetcode.com/problems/check-if-it-is-a-straight-line/?envType=study-plan
 //wrong answer [[0,1],[-6,-17],[3,10],[-7,-20],[1,4],[4,13],[9,28],[7,22]]
 //I was getting some kind of error by having zeros
 
+//attempt 4
+//got it, I did look out there for some help, I has getting formula wrong because of dividing by zero
+//108ms faster than 30.21%
+//43.9 MB less than 70.9%
+
  var checkStraightLine = function(coordinates) {
     if (coordinates.length <= 2){
         return true;
